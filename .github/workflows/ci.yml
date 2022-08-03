@@ -22,7 +22,19 @@ jobs:
       - name: Restore packages
         run: flutter pub get
 
-      - name: Build Flutter
-        run: flutter build ios-framework --no-profile --no-debug --output=framework/
+      - name: Create Framework dir
+        run: |
+          echo '开始创建文件件'
+          F_PATH=../../build/ios/app/outputs
+          echo $F_PATH
+          mkdir -p $F_PATH
+          flutter build ios-framework --no-profile --no-debug --output = build-output=$F_PATH
+          if [ -d ${F_PATH} ]; then
+                echo "编译成功......"${F_PATH}
+          else
+                echo "编译失败......"${F_PATH}
+          fi
+      
+     
 
-    
+
