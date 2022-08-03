@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - [main]
+jobs:
+  build_ios:
+    runs-on: macos-latest
+    env:
+      SHEME: Runner
+      BUILD_CONFIGURATION: Release
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Install and set Flutter version
+        uses: subosito/flutter-action@v1.4.0
+        with:
+          flutter-version: '2.8.100'
+
+      - name: Restore packages
+        run: flutter pub get
+
+      - name: Build Flutter
+        run: flutter build ios-framework --no-profile --no-debug --output=framework/
+
+    
