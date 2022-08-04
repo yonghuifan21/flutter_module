@@ -58,7 +58,7 @@ jobs:
           git config user.email "$GITHUB_EMAIL"
           git add .
           git checkout -b release
-          scheme='${{ secrets.ACCESS_TOKEN }}@'
+          scheme='https://${{ secrets.ACCESS_TOKEN }}@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
