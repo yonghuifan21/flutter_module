@@ -28,7 +28,7 @@ jobs:
 
       - name: Create Framework dir
       - env: 
-         GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
+           GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
       - run: |
           echo '开始创建文件件'
           ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
