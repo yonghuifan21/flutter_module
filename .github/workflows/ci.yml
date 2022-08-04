@@ -61,7 +61,9 @@ jobs:
           git remote add origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
           git commit -m "GitHub Actions Auto Builder Framworks at $(date +'%Y-%m-%d %H:%M:%S')"
           git pull
-          git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" release
+          echo "拉取代码成功"
+          git push 
+          echo "代码推送成功"
           LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
           indexdot=`echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}'`
           endStr=${string:$(indexdot+1)}
