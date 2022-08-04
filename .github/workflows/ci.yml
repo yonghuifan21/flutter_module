@@ -10,6 +10,7 @@ jobs:
     env:
       SHEME: Runner
       BUILD_CONFIGURATION: Release
+      ios_out_path: /Users/runner/work/build/flutter-libs/frameworks
 
     steps:
       - name: Checkout the code
@@ -30,7 +31,6 @@ jobs:
       - name: Create Framework dir
         run: |
           echo '开始创建文件件'
-          ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
           echo $ios_out_path
           rm -rf build
           flutter build ios-framework --no-profile --no-debug || exit -1 
@@ -50,7 +50,6 @@ jobs:
           # Github 仓库
           GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
         run: |
-          ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
           cd $ios_out_path
           git init 
           git config user.name "yonghuifan21"
@@ -58,13 +57,12 @@ jobs:
           git add .
           git checkout -b release
           git remote -v
-          git remote rm origin
-          git remote add origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
+          git remote set-url origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
           git remote -v
           git commit -m '打包提交成功' || echo "No changes, nothing to commit!"
           echo '代码提交成功'
-          # git pull origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
-          # echo "代码拉取成功"
+     #      git pull origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
+     #      echo "代码拉取成功"
           git push -u origin release
           echo "代码推送成功"
           LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
