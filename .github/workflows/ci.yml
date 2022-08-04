@@ -58,7 +58,7 @@ jobs:
           git config user.email "$GITHUB_EMAIL"
           git add .
           git checkout -b release
-          scheme='https://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@'
+          scheme='${{ secrets.ACCESS_TOKEN }}@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
@@ -70,7 +70,7 @@ jobs:
           git remote -v
           git commit -m '打包提交成功' || echo "No changes, nothing to commit!"
           echo '代码提交成功'
-          git push -u origin release
+          git push -u --force --quiet $proj_path release:release
           echo "代码推送成功"
           LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
           indexdot=`echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}'`
