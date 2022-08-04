@@ -19,20 +19,22 @@ jobs:
         with:
           flutter-version: '3.0.5'
           channel: 'stable'
+
       - name: Restore packages
         run: flutter pub get
 
       - name: Create Framework dir
         run: |
           echo '开始创建文件件'
-          F_PATH=../../build/ios/app/outputs
-          echo $F_PATH
-          mkdir -p $F_PATH
-          flutter build ios-framework --no-profile --no-debug --output = build-output=$F_PATH
-          if [ -d ${F_PATH} ]; then
-                echo "编译成功......"${F_PATH}
+          framework_path=build/app/outputs/frameworks/realease
+          echo $framework_path
+          rm -f $framework_path
+          mkdir -p $framework_path
+          flutter build ios-framework --no-profile --no-debug --output = $framework_path
+          if [ -d ${framework_path} ]; then
+                echo "编译成功......"${framework_path}
           else
-                echo "编译失败......"${F_PATH}
+                echo "编译失败......"${framework_path}
           fi
       
      
