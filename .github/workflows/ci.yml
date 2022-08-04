@@ -14,46 +14,46 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
 
-      # - name: Install and set Flutter version
-      #   uses: subosito/flutter-action@v2
-      #   with:
-      #     flutter-version: '3.0.5'
-      #     channel: 'stable'
+      - name: Install and set Flutter version
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
 
-      # - name: flutter clean
-      #   run: flutter clean
+      - name: flutter clean
+        run: flutter clean
 
-      # - name: Restore packages
-      #   run: flutter pub get
+      - name: Restore packages
+        run: flutter pub get
 
-      # - name: Create Framework dir
-      #   run: |
-      #     echo '开始创建文件件'
-      #     ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
-      #     echo $ios_out_path
-      #     rm -rf build
-      #     flutter build ios-framework --no-profile --no-debug || exit -1 
-      #     echo "\n5\. 输出文件到 $ios_out_path"
-      #     rm -rf $ios_out_path
-      #     mkdir -p $ios_out_path
-      #     cp -r build/ios/framework/Release/App.xcframework $ios_out_path
-      #     echo 'App.xcframework搬运完成'
-      #     if [ -d ${ios_out_path} ]; then
-      #           echo "编译成功......"${ios_out_path}
-      #     else
-      #           echo "编译失败......"${ios_out_path}
-      #     fi
+      - name: Create Framework dir
+        run: |
+          echo '开始创建文件件'
+          ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
+          echo $ios_out_path
+          rm -rf build
+          flutter build ios-framework --no-profile --no-debug || exit -1 
+          echo "\n5\. 输出文件到 $ios_out_path"
+          rm -rf $ios_out_path
+          mkdir -p $ios_out_path
+          cp -r build/ios/framework/Release/App.xcframework $ios_out_path
+          echo 'App.xcframework搬运完成'
+          if [ -d ${ios_out_path} ]; then
+                echo "编译成功......"${ios_out_path}
+          else
+                echo "编译失败......"${ios_out_path}
+          fi
       - name: git pull App.framework 
         env: 
           #github 仓库地址
           GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
         run: | 
-          ios_out_path='Users/runner/work/_temp'
+          ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
           sudo rm -rf $ios_out_path
           sudo mkdir -p $ios_out_path
           cd $ios_out_path
-          sudo touch READE.md
-          echo "# test111" >> README.md
+      #     sudo touch READE.md
+      #     echo "# test111" >> README.md
           git init & git add .
           git config user.name "yonghuifan21"
           git config user.email "andy_yonghui@163.com"
