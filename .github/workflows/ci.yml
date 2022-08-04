@@ -43,6 +43,7 @@ jobs:
           else
                 echo "编译失败......"${ios_out_path}
           fi
+          
       - name: git pull App.framework 
         env: 
           #github 仓库地址
