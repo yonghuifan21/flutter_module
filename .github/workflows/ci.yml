@@ -33,6 +33,7 @@ jobs:
           git add .
           git checkout -b release
           scheme='https://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@'
+          echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
           git remote add origin $proj_path
