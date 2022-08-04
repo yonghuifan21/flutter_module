@@ -54,25 +54,26 @@ jobs:
           cd $ios_out_path && git init & git add .
           git config user.name "yonghuifan21"
           git config user.email "andy_yonghui@163.com"
+          git add READE.md
           git add .
           git checkout -b release
           git remote -v
           git remote rm origin
           git remote add origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
           git remote -v
-          git commit -m ''
+          git commit -m '打包提交成功'
           echo '代码提交成功'
-          # git pull origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
-          # echo "代码拉取成功"
-          # git push -u origin release
-          # echo "代码推送成功"
-          # LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
-          # indexdot=`echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}'`
-          # endStr=${string:$(indexdot+1)}
-          # echo "获取到的tag最后几位" ${endStr}
-          # endtagint = {{endStr}}+1
-          # echo "修改之后的tag ${endtagint}"
-          # getTag=${${LatestTag}/%${endStr}/${endtagint}}
+          git pull origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
+          echo "代码拉取成功"
+          git push -u origin release
+          echo "代码推送成功"
+          LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
+          indexdot=`echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}'`
+          endStr=${string:$(indexdot+1)}
+          echo "获取到的tag最后几位" ${endStr}
+          endtagint = {{endStr}}+1
+          echo "修改之后的tag ${endtagint}"
+          getTag=${${LatestTag}/%${endStr}/${endtagint}}
           getTag='1.0.3'
           echo "新增的版本号...... ${getTag}"
           git tag ${getTag}
