@@ -48,7 +48,7 @@ jobs:
           #github 仓库地址
           GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
         run: | 
-          ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
+          ios_out_path='Users/runner/work/_temp'
           sudo rm -rf $ios_out_path
           sudo mkdir -p $ios_out_path
           cd $ios_out_path
