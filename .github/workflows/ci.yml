@@ -38,7 +38,6 @@ jobs:
           mkdir -p $ios_out_path
           cp -r build/ios/framework/Release/App.xcframework $ios_out_path
           echo 'App.xcframework搬运完成'
-
       - name: git pull App.framework 
         env: 
           #github 仓库地址
