@@ -29,7 +29,7 @@ jobs:
       - name: Create Framework dir
         run: |
           echo '开始创建文件件'
-          ios_out_path='/Users/runner/work/flutter_module/flutter_module/build/flutter-libs/frameworks'
+          ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
           echo $ios_out_path
           rm -rf build
           flutter build ios-framework --no-profile --no-debug || exit -1 
@@ -48,7 +48,7 @@ jobs:
           #github 仓库地址
           GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
         run: | 
-          ios_out_path='/Users/runner/work/flutter_module/flutter_module/build/flutter-libs/frameworks'
+          ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
           cd $ios_out_path && git init & git add .
           git config user.name "yonghuifan21"
           git config user.email "andy_yonghui@163.com"
