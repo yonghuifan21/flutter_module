@@ -57,7 +57,8 @@ jobs:
           git add .
           git checkout -b release
           git remote -v
-          git remote rm "https://github.com/yonghuifan21/flutter_module"
+          git remote rm origin 
+          git remote rm origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
           git remote add origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
           git commit -m "GitHub Actions Auto Builder Framworks at $(date +'%Y-%m-%d %H:%M:%S')"
           git pull
