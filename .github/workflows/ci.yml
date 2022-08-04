@@ -51,6 +51,7 @@ jobs:
           ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
           sudo rm -rf $ios_out_path
           sudo mkdir -p $ios_out_path
+          echo "# test111" >> README.md
           cd $ios_out_path && git init & git add .
           git config user.name "yonghuifan21"
           git config user.email "andy_yonghui@163.com"
