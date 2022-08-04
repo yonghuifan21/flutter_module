@@ -29,7 +29,7 @@ jobs:
       - name: Create Framework dir
         run: |
           echo '开始创建文件件'
-          ios_out_path='flutter-libs/frameworks'
+          ios_out_path='/Users/runner/work/flutter_module/flutter_module/build/flutter-libs/frameworks'
           echo $ios_out_path
           rm -rf build
           flutter build ios-framework --no-profile --no-debug || exit -1 
