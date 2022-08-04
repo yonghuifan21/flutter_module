@@ -59,7 +59,7 @@ jobs:
           git remote -v
           git remote rm origin
           git remote add origin "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO"
-          git commit -m "flutter-framework `date "+%Y-%m-%d %H:%M:%S"`"
+          git commit -m "GitHub Actions Auto Builder Framworks at $(date +'%Y-%m-%d %H:%M:%S')"
           echo "代码提交成功"
           git push 
           echo "代码推送成功"
