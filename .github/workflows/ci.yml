@@ -32,7 +32,7 @@ jobs:
           git config user.email "$GITHUB_EMAIL"
           git add .
           git checkout -b release
-          scheme=https://${GITHUB_TOKEN}@
+          scheme=https://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@
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
           git remote add origin $proj_path
