@@ -21,28 +21,28 @@ jobs:
           flutter-version: '3.0.5'
           channel: 'stable'
 
-      - name: Flutter clean
-        run: flutter clean
+      # - name: Flutter clean
+      #   run: flutter clean
 
-      - name: Restore packages
-        run: flutter pub get
+      # - name: Restore packages
+      #   run: flutter pub get
 
-      - name: Export Framework
-        run: |
-          echo '开始创建文件件'
-          echo $ios_out_path
-          rm -rf build
-          flutter build ios-framework --no-profile --no-debug || exit -1 
-          echo "\n5\. 输出文件到 $ios_out_path"
-          rm -rf $ios_out_path
-          mkdir -p $ios_out_path
-          cp -r build/ios/framework/Release/App.xcframework $ios_out_path
-          echo 'App.xcframework搬运完成'
-          if [ -d ${ios_out_path} ]; then
-                echo "编译成功......"${ios_out_path}
-          else
-                echo "编译失败......"${ios_out_path}
-          fi
+      # - name: Export Framework
+      #   run: |
+      #     echo '开始创建文件件'
+      #     echo $ios_out_path
+      #     rm -rf build
+      #     flutter build ios-framework --no-profile --no-debug || exit -1 
+      #     echo "\n5\. 输出文件到 $ios_out_path"
+      #     rm -rf $ios_out_path
+      #     mkdir -p $ios_out_path
+      #     cp -r build/ios/framework/Release/App.xcframework $ios_out_path
+      #     echo 'App.xcframework搬运完成'
+      #     if [ -d ${ios_out_path} ]; then
+      #           echo "编译成功......"${ios_out_path}
+      #     else
+      #           echo "编译失败......"${ios_out_path}
+      #     fi
 
       - name: Git pull tag
         env: 
@@ -52,13 +52,15 @@ jobs:
           GITHUB_EMAIL: andy_yonghui@163.com
           GITHUB_TOKEN: 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
         run: |
+          rm -rf $ios_out_path
+          mkdir -p $ios_out_path
           cd $ios_out_path
           git init 
           git config user.name "$GITHUB_USERNAME"
           git config user.email "$GITHUB_EMAIL"
           git add .
           git checkout -b release
-          scheme='https://${{ secrets.ACCESS_TOKEN }}@'
+          scheme='https://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@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
