@@ -12,25 +12,25 @@ jobs:
 
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Install and set Flutter version
-        uses: subosito/flutter-action@v2
-        with:
+      - uses: subosito/flutter-action@v2
+      - with:
           flutter-version: '3.0.5'
           channel: 'stable'
 
       - name: flutter clean
-        run: flutter clean
+      - run: flutter clean
 
       - name: Restore packages
-        run: flutter pub get
+      - run: flutter pub get
 
       - name: Create Framework dir
-        env: 
-          #github 仓库地址
-          GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
-        run: |
+      - env: 
+           #github 仓库地址
+           GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
+      - run: |
           echo '开始创建文件件'
           ios_out_path='/Users/runner/work/build/flutter-libs/frameworks'
           echo $ios_out_path
@@ -76,4 +76,3 @@ jobs:
           echo "新增的版本号...... ${getTag}"
           git tag ${getTag}
           git push origin ${getTag}
-          
