@@ -56,9 +56,9 @@ jobs:
           mkdir -p $ios_out_path
           cd $ios_out_path
           git init 
+          git add .
           git config user.name "$GITHUB_USERNAME"
           git config user.email "$GITHUB_EMAIL"
-          git add .
           git checkout -b release
           scheme='https://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@'
           echo 'scheme'$scheme
@@ -70,9 +70,10 @@ jobs:
           git remote set-url origin $proj_path
           echo '设置源路径之后'
           git remote -v
+          git add .
           git commit -m '打包提交成功' || echo "No changes, nothing to commit!"
           echo '代码提交成功'
-          git push --set-upstream origin release
+          git push origin HEAD:release
           echo "代码推送成功"
           LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
           indexdot=`echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}'`
