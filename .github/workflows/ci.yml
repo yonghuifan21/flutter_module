@@ -67,7 +67,7 @@ jobs:
           LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
           indexdot=`echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}'`
           endStr=${string:$(indexdot+1)}
-          echo "获取到的tag最后几位 ${endStr}""
+          echo "获取到的tag最后几位" ${endStr}
           endtagint = {{endStr}}+1
           echo "修改之后的tag ${endtagint}"
           getTag=${${LatestTag}/%${endStr}/${endtagint}}
