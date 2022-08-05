@@ -50,7 +50,7 @@ jobs:
           GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
           GITHUB_USERNAME: yonghuifan21
           GITHUB_EMAIL: andy_yonghui@163.com
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: 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
           GITHUB_PASSWORD: Andyyonghui163
         run: |
           rm -rf $ios_out_path
@@ -62,7 +62,7 @@ jobs:
           git config user.password "$GITHUB_PASSWORD"
           git add .
           git checkout -b release
-          scheme='https://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@'
+          scheme='https://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@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
