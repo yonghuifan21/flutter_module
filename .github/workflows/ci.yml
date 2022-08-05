@@ -62,7 +62,7 @@ jobs:
           git config user.password "$GITHUB_PASSWORD"
           git add .
           git checkout -b release
-          scheme='https://${{ secrets[env.LOCAL_TOKEN] }}@'
+          scheme='https://$LOCAL_TOKEN@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
