@@ -16,7 +16,7 @@ jobs:
       GITHUB_EMAIL: andy_yonghui@163.com
       GITHUB_PASSWORD: Andyyonghui163
       LOCAL_TOKEN: ${{ secrets.ACC_TOKEN }}
-      repo-token: ${{ secrets.GITHUB_TOKEN }}
+      RSA_TOKEN: ${{ secrets.RSA_TOKEN }}
     steps:
       # - name: Checkout the code
       #   uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
           echo ${{ secrets.ACC_TOKEN }}
           at='@'
           http='https://'
-          scheme=''$GITHUB_USERNAME':'$LOCAL_TOKEN''$at''
+          scheme=''$GITHUB_USERNAME':'$RSA_TOKEN''$at''
           echo 'scheme'$scheme
           proj_path=$http$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
