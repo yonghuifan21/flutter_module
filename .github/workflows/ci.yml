@@ -50,7 +50,6 @@ jobs:
           GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
           GITHUB_USERNAME: yonghuifan21
           GITHUB_EMAIL: andy_yonghui@163.com
-          GITHUB_TOKEN: ${{ ACC_TOKEN }}
           GITHUB_PASSWORD: Andyyonghui163
         run: |
           rm -rf $ios_out_path
@@ -62,7 +61,7 @@ jobs:
           git config user.password "$GITHUB_PASSWORD"
           git add .
           git checkout -b release
-          scheme='https://$GITHUB_TOKEN@'
+          scheme='https://${{ secrets.ACC_TOKEN }}@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
