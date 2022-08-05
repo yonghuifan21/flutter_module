@@ -11,7 +11,11 @@ jobs:
       SHEME: Runner
       BUILD_CONFIGURATION: Release
       ios_out_path: /Users/runner/work/build/flutter-libs/frameworks
-
+      GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
+      GITHUB_USERNAME: yonghuifan21
+      GITHUB_EMAIL: andy_yonghui@163.com
+      GITHUB_PASSWORD: Andyyonghui163
+      LOCAL_TOKEN: ${{ secrets.ACC_TOKEN }}
     steps:
       # - name: Checkout the code
       #   uses: actions/checkout@v2
@@ -47,11 +51,6 @@ jobs:
       - name: Git pull tag
         env: 
           # Github 仓库
-          GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
-          GITHUB_USERNAME: yonghuifan21
-          GITHUB_EMAIL: andy_yonghui@163.com
-          GITHUB_PASSWORD: Andyyonghui163
-          LOCAL_TOKEN: ${{ secrets.ACC_TOKEN }}
         run: |
           rm -rf $ios_out_path
           mkdir -p $ios_out_path
