@@ -18,6 +18,9 @@ jobs:
       LOCAL_TOKEN: ${{ secrets.ACC_TOKEN }}
       repo-token: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - uses: de-vri-es/setup-git-credentials@v2
+        with:
+          credentials: ${{secrets.GIT_CREDENTIALS}}
       # - name: Checkout the code
       #   uses: actions/checkout@v2
       # - name: Install and set Flutter version
@@ -48,9 +51,6 @@ jobs:
       #     else
       #           echo "编译失败......"${ios_out_path}
       #     fi
-      - uses: de-vri-es/setup-git-credentials@v2
-        with:
-        credentials: ${{secrets.GIT_CREDENTIALS}}
       - name: Git pull tag
         run: |
           rm -rf $ios_out_path
