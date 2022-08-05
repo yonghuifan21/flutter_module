@@ -63,7 +63,7 @@ jobs:
           echo ${{ secrets.ACC_TOKEN }}
           at='@'
           http='https://'
-          scheme=''$GITHUB_USERNAME':'$RSA_PUB_TOKEN''$at''
+          scheme=''$LOCAL_TOKEN''$at''
           echo 'scheme'$scheme
           proj_path=$http$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
@@ -77,7 +77,7 @@ jobs:
           git add .
           git commit -m '打包提交成功' || echo "No changes, nothing to commit!"
           echo '代码提交成功'
-          sudo git push -u -f --force --quiet $proj_path 
+          sudo git push -u -f --force --quiet
           echo "代码推送成功"
           LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
           indexdot=`echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}'`
