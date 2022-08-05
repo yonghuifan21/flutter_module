@@ -62,7 +62,7 @@ jobs:
           git config user.password "$GITHUB_PASSWORD"
           git add .
           git checkout -b release
-          scheme=https://$LOCAL_TOKEN@
+          scheme='https://$(env.LOCAL_TOKEN)@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
@@ -76,7 +76,7 @@ jobs:
           git add .
           git commit -m '打包提交成功' || echo "No changes, nothing to commit!"
           echo '代码提交成功'
-          git push -u --force --quiet $proj_path -f
+          git push -u -f --force --quiet $proj_path 
           echo "代码推送成功"
           LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
           indexdot=`echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}'`
