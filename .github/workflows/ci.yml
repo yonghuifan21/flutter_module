@@ -48,7 +48,9 @@ jobs:
       #     else
       #           echo "编译失败......"${ios_out_path}
       #     fi
-
+      - uses: de-vri-es/setup-git-credentials@v2
+        with:
+        credentials: ${{secrets.GIT_CREDENTIALS}}
       - name: Git pull tag
         run: |
           rm -rf $ios_out_path
@@ -62,8 +64,8 @@ jobs:
           git checkout -b release
           echo ${{ secrets.ACC_TOKEN }}
           at='@'
-          http='git'
-          scheme=''$LOCAL_TOKEN''$at''
+          http='https://'
+          scheme=''$GITHUB_USERNAME':'$LOCAL_TOKEN''$at''
           echo 'scheme'$scheme
           proj_path=$http$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
