@@ -63,7 +63,7 @@ jobs:
           echo ${{ secrets.ACC_TOKEN }}
           at='@'
           http='https://'
-          scheme=''$GITHUB_USERNAME':'$RSA_TOKEN''$at''
+          scheme=''$GITHUB_USERNAME':'$RSA_PUB_TOKEN''$at''
           echo 'scheme'$scheme
           proj_path=$http$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
