@@ -64,9 +64,10 @@ jobs:
           git checkout -b release
           echo ${{ secrets.ACC_TOKEN }}
           at='@'
-          scheme='https://'$GITHUB_USERNAME':'$LOCAL_TOKEN''$at''
+          http='https://'
+          scheme=''$GITHUB_USERNAME':'$LOCAL_TOKEN''$at''
           echo 'scheme'$scheme
-          proj_path=$scheme$GITHUB_REPO
+          proj_path=$http$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
           git remote add origin $proj_path
           echo '设置源路径之前'
