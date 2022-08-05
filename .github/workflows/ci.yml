@@ -63,7 +63,7 @@ jobs:
           git add .
           git checkout -b release
           echo ${{ secrets.ACC_TOKEN }}
-          scheme='https://$(env.LOCAL_TOKEN)@'
+          scheme='https://${{ secrets.ACC_TOKEN }}@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
