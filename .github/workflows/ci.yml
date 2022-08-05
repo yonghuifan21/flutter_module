@@ -62,7 +62,7 @@ jobs:
           git checkout -b release
           echo ${{ secrets.ACC_TOKEN }}
           at='@'
-          http='https://'
+          http='ssh:'
           scheme=''$LOCAL_TOKEN''$at''
           echo 'scheme'$scheme
           proj_path=$http$scheme$GITHUB_REPO
