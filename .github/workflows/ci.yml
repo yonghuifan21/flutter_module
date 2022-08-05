@@ -17,6 +17,7 @@ jobs:
       GITHUB_PASSWORD: Andyyonghui163
       LOCAL_TOKEN: ${{ secrets.ACC_TOKEN }}
       RSA_TOKEN: ${{ secrets.RSA_TOKEN }}
+      RSA_PUB_TOKEN: ${{ secrets.RSA_PUB_TOKEN }}
     steps:
       # - name: Checkout the code
       #   uses: actions/checkout@v2
