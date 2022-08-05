@@ -77,7 +77,7 @@ jobs:
           git add .
           git commit -m '打包提交成功' || echo "No changes, nothing to commit!"
           echo '代码提交成功'
-          sudo git push -u -f --force --quiet
+          sudo git push -u -f --force --quiet --set-upstream origin release
           echo "代码推送成功"
           LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
           indexdot=`echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}'`
