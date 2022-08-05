@@ -60,7 +60,7 @@ jobs:
           git config user.email "$GITHUB_EMAIL"
           git add .
           git checkout -b release
-          scheme='https://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@'
+          scheme='https://yonghuifan21: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@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
