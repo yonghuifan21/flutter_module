@@ -18,9 +18,6 @@ jobs:
       LOCAL_TOKEN: ${{ secrets.ACC_TOKEN }}
       repo-token: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: de-vri-es/setup-git-credentials@v2
-        with:
-          credentials: ${{secrets.GIT_CREDENTIALS}}
       # - name: Checkout the code
       #   uses: actions/checkout@v2
       # - name: Install and set Flutter version
