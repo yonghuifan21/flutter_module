@@ -60,6 +60,7 @@ jobs:
           git config user.name "$GITHUB_USERNAME"
           git config user.email "$GITHUB_EMAIL"
           git checkout -b release
+          git push -u origin release
           scheme='https://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@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
