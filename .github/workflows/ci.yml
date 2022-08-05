@@ -72,6 +72,7 @@ jobs:
           git remote -v
           git commit -m '打包提交成功' || echo "No changes, nothing to commit!"
           echo '代码提交成功'
+          git pull --rebase origin master
           git push --force --quiet $proj_path
           echo "代码推送成功"
           LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
