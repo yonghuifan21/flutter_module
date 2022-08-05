@@ -51,6 +51,7 @@ jobs:
           GITHUB_USERNAME: yonghuifan21
           GITHUB_EMAIL: andy_yonghui@163.com
           GITHUB_PASSWORD: Andyyonghui163
+          LOCAL_TOKEN: ${{ secrets.ACC_TOKEN }}
         run: |
           rm -rf $ios_out_path
           mkdir -p $ios_out_path
@@ -61,7 +62,7 @@ jobs:
           git config user.password "$GITHUB_PASSWORD"
           git add .
           git checkout -b release
-          scheme='https://${{ secrets.ACC_TOKEN }}@'
+          scheme='https://${{ secrets[env.LOCAL_TOKEN] }}@'
           echo 'scheme'$scheme
           proj_path=$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
