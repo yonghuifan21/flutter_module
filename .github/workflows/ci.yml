@@ -70,6 +70,7 @@ jobs:
           git remote set-url origin $proj_path
           echo '设置源路径之后'
           git remote -v
+          touch a.text
           git add .
           git commit -m '打包提交成功' || echo "No changes, nothing to commit!"
           echo '代码提交成功'
