@@ -49,8 +49,6 @@ jobs:
       #     fi
 
       - name: Git pull tag
-        env: 
-          # Github 仓库
         run: |
           rm -rf $ios_out_path
           mkdir -p $ios_out_path
