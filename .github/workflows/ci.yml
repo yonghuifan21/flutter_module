@@ -88,8 +88,8 @@ jobs:
             listcount=${#taglist[*]}
             endoftag=taglist[${listcount}-1]
             endtagint=${{endoftag}}+1
-            endoftag='${endtagint}'
-            taglist[${listcount}-1]=endoftag
+            endoftagstr='${endtagint}'
+            taglist[${listcount}-1]=endoftagstr
             pos=0
             for element in ${taglist[@]}
             do
