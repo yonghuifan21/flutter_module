@@ -80,6 +80,8 @@ jobs:
           echo '代码提交成功'
           sudo git push -u -f --force --quiet --set-upstream origin release
           echo "代码推送成功"
+          taglist=$(git rev-list --tags --max-count=1)
+          echo ${taglist}
           latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
           echo "获取到的最新tag" ${latestTag}
           getTag=''
