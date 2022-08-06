@@ -82,7 +82,7 @@ jobs:
           sudo git push -u -f --force --quiet --set-upstream origin release
           echo "代码推送成功"
           ctaglist=$(git tag -l)
-          echo "ctaglist "${ctaglist}
+          echo ${ctaglist[@]}
           clistcount=${#ctaglist[*]}
           echo "clistcount "${clistcount}
           getTag=''
