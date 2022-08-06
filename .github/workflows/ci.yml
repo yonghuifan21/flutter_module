@@ -80,14 +80,14 @@ jobs:
           echo '代码提交成功'
           sudo git push -u -f --force --quiet --set-upstream origin release
           echo "代码推送成功"
-          taglist=$(git rev-list --tags --max-count=1)
-          echo "taglist "${taglist}
-          latestTag=$(git describe --always --tags `git rev-list --tags --max-count=1`)
-          echo "latestTag "${latestTag}
+          ctaglist=$(git tag -l)
+          echo "ctaglist "${ctaglist}
+          clistcount=${#ctaglist[*]}
           getTag=''
-          if [ "$latestTag" ]
+          if [ $clistcount -gt 0 ]
           then
             latestTag=$(git describe --always --tags `git rev-list --tags --max-count=1`)
+            echo "latestTag "${latestTag}
             echo "获取到的最新tag" ${latestTag}
             echo '字符串不为空'
             taglist=(${latestTag//\./ })
