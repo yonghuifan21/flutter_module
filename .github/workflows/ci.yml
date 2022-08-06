@@ -50,7 +50,7 @@ jobs:
       #           echo "编译失败......"${ios_out_path}
       #     fi
       - name: Git pull tag
-      - uses: oleksiyrudenko/gha-git-credentials@v2.1
+        uses: oleksiyrudenko/gha-git-credentials@v2.1
         with:
             global: true
             ios_out_path: /Users/runner/work/build/flutter-libs/frameworks
