@@ -94,9 +94,10 @@ jobs:
             for element in ${taglist[@]}
             do
                 if [ $pos -gt ${listcount}-1];then
-                gatTag="gatTag$element"
+                  gatTag="gatTag$element"
                 else
-                gatTag="gatTag$element,"
+                  gatTag="gatTag$element,"
+                fi
             done
           else 
             gatTag = 1.0.0
