@@ -81,7 +81,7 @@ jobs:
           echo '代码提交成功'
           sudo git push -u -f --force --quiet --set-upstream origin release
           echo "代码推送成功"
-          git fetch --tags
+          git fetch -p --tags
           ctaglist=$(git tag -l)
           echo ${ctaglist[@]}
           clistcount=${#ctaglist[*]}
