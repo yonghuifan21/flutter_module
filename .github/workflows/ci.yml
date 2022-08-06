@@ -60,7 +60,8 @@ jobs:
           git config user.name $GITHUB_USERNAME
           git config user.email $GITHUB_EMAIL
           git add .
-          git checkout -b release
+          branchname='release'
+          git checkout -b ${branchname}
           echo ${{ secrets.PAT_TOKEN_FLUTTER }}
           at='@'
           http='https://'
@@ -87,7 +88,7 @@ jobs:
           getTag=''
           if [ $clistcount -gt 0 ]
           then
-            latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+            latestTag=$(git describe --tags `git rev-list --tags --grep ${branchname} --max-count=1`)
             echo "latestTag "${latestTag}
             echo "获取到的最新tag" ${latestTag}
             echo '字符串不为空'
