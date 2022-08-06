@@ -88,6 +88,7 @@ jobs:
           getTag=''
           if [ $clistcount -gt 0 ]
           then
+            git fetch --all --tags
             latestTag=$(git describe --tags `git rev-list --tags --grep ${branchname} --max-count=1`)
             echo "latestTag "${latestTag}
             echo "获取到的最新tag" ${latestTag}
