@@ -80,7 +80,7 @@ jobs:
           echo '代码提交成功'
           sudo git push -u -f --force --quiet --set-upstream origin release
           echo "代码推送成功"
-          latestTag='git describe --tags $(git rev-list --tags --max-count=1)'
+          latestTag='git describe --tags ${git rev-list --tags --max-count=1}'
           echo "获取到的最新tag" ${latestTag}
           getTag=''
           if [ "$latestTag" ]
@@ -94,13 +94,13 @@ jobs:
             echo $listcount
             lastIndex=listcount
             let --lastIndex
-              echo $lastIndex
+            echo $lastIndex
             endoftag=${taglist[$lastIndex]}
-              echo $endoftag
+            echo $endoftag
             endtagint=${endoftag}
             let ++endtagint
-              endoftagstr=${endtagint}
-              taglist[${listcount}-1]=$endoftagstr
+            endoftagstr=${endtagint}
+            taglist[${listcount}-1]=$endoftagstr
             echo ${taglist[@]}
             pos=0
             for i in $(seq 0 $lastIndex)
