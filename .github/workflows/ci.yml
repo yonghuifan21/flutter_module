@@ -61,10 +61,10 @@ jobs:
           git config user.email $GITHUB_EMAIL
           git add .
           git checkout -b release
-          echo ${{ secrets.pat_token }}
+          echo ${{ secrets.PAT_TOKEN_FLUTTER }}
           at='@'
           http='https://'
-          scheme=''$GITHUB_USERNAME':'$pat_token''$at''
+          scheme=$GITHUB_USERNAME:$pat_token$at
           echo 'scheme'$scheme
           proj_path=$http$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
