@@ -80,27 +80,43 @@ jobs:
           echo '代码提交成功'
           sudo git push -u -f --force --quiet --set-upstream origin release
           echo "代码推送成功"
-          LatestTag='git describe --tags $(git rev-list --tags --max-count=1)'
-          echo "获取到的最新tag" ${LatestTag}
-          gatTag=''
-          if [ ${#latestTag} -gt 0];then
-            taglist=(${latestTag//./})
+          latestTag='git describe --tags $(git rev-list --tags --max-count=1)'
+          echo "获取到的最新tag" ${latestTag}
+          getTag=''
+          if [ "$latestTag" ]
+          then
+            echo '字符串不为空'
+            taglist=(${latestTag//\./ })
+            echo ${taglist[@]}
             listcount=${#taglist[*]}
-            endoftag=taglist[${listcount}-1]
-            endtagint=${{endoftag}}+1
-            endoftagstr='${endtagint}'
-            taglist[${listcount}-1]=endoftagstr
+            getTag=''
+            listcount=$((${#taglist[@]}))
+            echo $listcount
+            lastIndex=listcount
+            let --lastIndex
+              echo $lastIndex
+            endoftag=${taglist[$lastIndex]}
+              echo $endoftag
+            endtagint=${endoftag}
+            let ++endtagint
+              endoftagstr=${endtagint}
+              taglist[${listcount}-1]=$endoftagstr
+            echo ${taglist[@]}
             pos=0
-            for element in ${taglist[@]}
+            for i in $(seq 0 $lastIndex)
             do
-                if [ $pos -gt ${listcount}-1];then
-                  gatTag="gatTag$element"
-                else
-                  gatTag="gatTag$element,"
-                fi
+              if [ $i -le $lastIndex ]
+              then
+                getTag="$getTag${taglist[$i]},"
+                echo "结束的时候	"$getTag
+              else
+                getTag=$getTag${taglist[$i]}
+                echo "结束的时候"$getTag
+              fi
             done
           else 
-            gatTag = 1.0.0
+            echo '字符串为空'
+            getTag='1.0.0'
           fi
           echo '$getTag'
           echo "新增的版本号...... ${getTag}"
