@@ -83,10 +83,11 @@ jobs:
           ctaglist=$(git tag -l)
           echo "ctaglist "${ctaglist}
           clistcount=${#ctaglist[*]}
+          echo "clistcount "${clistcount}
           getTag=''
           if [ $clistcount -gt 0 ]
           then
-            latestTag=$(git describe --always --tags `git rev-list --tags --max-count=1`)
+            latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
             echo "latestTag "${latestTag}
             echo "获取到的最新tag" ${latestTag}
             echo '字符串不为空'
