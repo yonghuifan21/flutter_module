@@ -81,6 +81,7 @@ jobs:
           echo '代码提交成功'
           sudo git push -u -f --force --quiet --set-upstream origin release
           echo "代码推送成功"
+          git fetch --tags
           ctaglist=$(git tag -l)
           echo ${ctaglist[@]}
           clistcount=${#ctaglist[*]}
@@ -88,7 +89,6 @@ jobs:
           getTag=''
           if [ $clistcount -gt 0 ]
           then
-            git fetch --all --tags
             latestTag=$(git describe --tags `git rev-list --tags --grep ${branchname} --max-count=1`)
             echo "latestTag "${latestTag}
             echo "获取到的最新tag" ${latestTag}
