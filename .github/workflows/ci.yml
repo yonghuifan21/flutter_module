@@ -81,8 +81,11 @@ jobs:
           echo '代码提交成功'
           sudo git push -u -f --force --quiet --set-upstream origin release
           echo "代码推送成功"
+          rm .git/refs/remotes/origin/main
+          rm .git/refs/remotes/origin/feature-test
           git fetch --prune --tags
           git remote prune origin
+          git pull
           ctaglist=$(git tag -l)
           echo ${ctaglist[@]}
           clistcount=${#ctaglist[*]}
