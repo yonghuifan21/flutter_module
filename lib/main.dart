@@ -33,23 +33,20 @@ Widget _widgetForRoute(String url) {
     case 'route1':
       return MaterialApp(
         home: Scaffold(
-          appBar: AppBar(title: const Text('Flutter Github Actions 发布')),
-          body: ContentWidget(route: route, message: parameters),
-          // Center(
-          //   child:
-          //    Column(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: <Widget>[
-          //       Text('页面路由名称 $route \n', style: TextStyle(color: Colors.red)),
-          //       //     textDirection: TextDirection.ltr),
-          //       // Text('页面参数 $parameters \n',
-          //       //     style: TextStyle(color: Colors.red),
-          //       //     textDirection: TextDirection.ltr),
-          //       ContentWidget(route: route, message: parameters),
-          //     ],
-          //   ),
-          // )
-        ),
+            appBar: AppBar(title: const Text('Flutter Github Actions 发布')),
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('页面路由名称 $route \n',
+                      style: const TextStyle(color: Colors.red)),
+                  Text('页面参数 $parameters \n',
+                      style: TextStyle(color: Colors.red),
+                      textDirection: TextDirection.ltr),
+                  ContentWidget(route: route, message: parameters)
+                ],
+              ),
+            )),
       );
       break;
     default:
