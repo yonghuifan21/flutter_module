@@ -48,7 +48,7 @@ jobs:
           GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
           GITHUB_USERNAME: 'yonghuifan21'
           GITHUB_EMAIL: 'andy_yonghui@163.com'
-          FLUTTER_TOKEN: ${{ secrets.FLUTTER_TOKEN }}
+          pat_token: ${{ secrets.PAT_TOKEN_FLUTTER }}
           LOCAL_TOKEN: ${{ secrets.ACC_TOKEN }}
           RSA_TOKEN: ${{ secrets.RSA_TOKEN }}
           RSA_PUB_TOKEN: ${{ secrets.RSA_PUB_TOKEN }}
@@ -61,10 +61,10 @@ jobs:
           git config user.email $GITHUB_EMAIL
           git add .
           git checkout -b release
-          echo ${{ secrets.ACC_TOKEN }}
+          echo ${{ secrets.pat_token }}
           at='@'
           http='https://'
-          scheme=''$GITHUB_USERNAME':'$FLUTTER_TOKEN''$at''
+          scheme=''$GITHUB_USERNAME':'$pat_token''$at''
           echo 'scheme'$scheme
           proj_path=$http$scheme$GITHUB_REPO
           echo '项目地址'$proj_path
