@@ -11,13 +11,6 @@ jobs:
       SHEME: Runner
       BUILD_CONFIGURATION: Release
       ios_out_path: /Users/runner/work/build/flutter-libs/frameworks
-      GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
-      GITHUB_USERNAME: 'yonghuifan21'
-      GITHUB_EMAIL: 'andy_yonghui@163.com'
-      FLUTTER_TOKEN: ${{ secrets.FLUTTER_TOKEN }}
-      LOCAL_TOKEN: ${{ secrets.ACC_TOKEN }}
-      RSA_TOKEN: ${{ secrets.RSA_TOKEN }}
-      RSA_PUB_TOKEN: ${{ secrets.RSA_PUB_TOKEN }}
     steps:
       # - name: Checkout the code
       #   uses: actions/checkout@v2
@@ -51,14 +44,21 @@ jobs:
       #     fi
     
       - name: Git pull tag
+        env: 
+          GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
+          GITHUB_USERNAME: 'yonghuifan21'
+          GITHUB_EMAIL: 'andy_yonghui@163.com'
+          FLUTTER_TOKEN: ${{ secrets.FLUTTER_TOKEN }}
+          LOCAL_TOKEN: ${{ secrets.ACC_TOKEN }}
+          RSA_TOKEN: ${{ secrets.RSA_TOKEN }}
+          RSA_PUB_TOKEN: ${{ secrets.RSA_PUB_TOKEN }}
         run: |
           rm -rf $ios_out_path
           mkdir -p $ios_out_path
           cd $ios_out_path
           git init 
-          git config user.name "$GITHUB_USERNAME"
-          git config user.email "$GITHUB_EMAIL"
-          git config user.password "$GITHUB_PASSWORD"
+          git config user.name $GITHUB_USERNAME
+          git config user.email $GITHUB_EMAIL
           git add .
           git checkout -b release
           echo ${{ secrets.ACC_TOKEN }}
