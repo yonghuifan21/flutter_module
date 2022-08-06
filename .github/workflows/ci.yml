@@ -80,8 +80,8 @@ jobs:
           echo '代码提交成功'
           sudo git push -u -f --force --quiet --set-upstream origin release
           echo "代码推送成功"
-          LatestTag=`git describe --tags `git rev-list --tags --grep prod --max-count=1`
-          indexdot=`echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}'`
+          LatestTag='git describe --tags 'git rev-list --tags --grep prod --max-count=1''
+          indexdot='echo "$LatestTag" | awk -F ''$.'' '{printf "%d", length($0)-length($NF)}''
           endStr=${string:$(indexdot+1)}
           echo "获取到的tag最后几位" ${endStr}
           endtagint = {{endStr}}+1
