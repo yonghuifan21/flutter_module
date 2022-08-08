@@ -12,13 +12,13 @@ jobs:
       BUILD_CONFIGURATION: Release
       ios_out_path: /Users/runner/work/build/flutter-libs/frameworks
     steps:
-      # - name: Checkout the code
-      #   uses: actions/checkout@v2
-      # - name: Install and set Flutter version
-      #   uses: subosito/flutter-action@v2
-      #   with:
-      #     flutter-version: '3.0.5'
-      #     channel: 'stable'
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Install and set Flutter version
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
 
       # - name: Flutter clean
       #   run: flutter clean
@@ -31,11 +31,12 @@ jobs:
           echo '开始创建文件件'
           echo $ios_out_path
           rm -rf build
-     #      flutter build ios-framework --no-profile --no-debug || exit -1 
+          flutter build ios-framework --no-profile --no-debug || exit -1 
           echo "\n5\. 输出文件到 $ios_out_path"
           rm -rf $ios_out_path
           mkdir -p $ios_out_path/App.xcframework
-      #    cp -r build/ios/framework/Release/App.xcframework $ios_out_path/App.xcframework
+          cd $ios_out_path
+          cp -r build/ios/framework/Release/App.xcframework $ios_out_path/App.xcframework
           echo 'App.xcframework搬运完成'
           if [ -d ${ios_out_path} ]; then
                 echo "编译成功......"${ios_out_path}
