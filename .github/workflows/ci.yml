@@ -44,7 +44,7 @@ jobs:
                 echo "编译失败......"${ios_out_path}
           fi
     
-      - name: Git pull tag
+      - name: Git push tag
         env: 
           GITHUB_REPO: github.com/yonghuifan21/FlutterModuleSDK.git
           GITHUB_USERNAME: 'yonghuifan21'
@@ -68,12 +68,32 @@ jobs:
           scheme=$GITHUB_USERNAME:$pat_token$at
           echo 'scheme'$scheme
           proj_path=$http$scheme$GITHUB_REPO
+          homepage=$http$GITHUB_REPO
           echo '项目地址'$proj_path
           git remote add origin $proj_path
           echo '设置源路径之前'
           git remote -v
           git remote set-url origin $proj_path
           echo '设置源路径之后'
+          #创建pod相关文件
+          yhflutter_pod_file="$ios_out_path/FlutterModuleSDK.podspec"
+          touch "${ios_out_path}/LICENSE";
+          touch $ios_out_path;
+          echo "Pod::Spec.new do |s|" >> $yhflutter_pod_file
+          echo "  s.name             = 'FlutterModuleSDK'" >> $yhflutter_pod_file
+          echo "  s.version          = '1.0.0'" >> $yhflutter_pod_file
+          echo "  s.summary          = 'a flutter project'" >> $yhflutter_pod_file
+          echo "  s.description      = <<-DESC" >> $yhflutter_pod_file
+          echo "  A new flutter plugin project." >> $yhflutter_pod_file
+          echo "  DESC" >> $yhflutter_pod_file
+          echo "  s.homepage         = 'https://github.com/yonghuifan21/FlutterModuleSDK'" >> $yhflutter_pod_file
+          echo "  s.license          = { :file => './LICENSE' }" >> $yhflutter_pod_file
+          echo "  s.author           = { 'Flutter Dev Team' => 'flutter-dev@googlegroups.com' }" >> $yhflutter_pod_file
+          echo "  s.source           = { :git => 'git@github.com:yonghuifan21/FlutterModuleSDK.git', :tag => s.version.to_s }" >> $yhflutter_pod_file
+          echo "  s.ios.vendored_framework   = '*.xcframework'" >> $yhflutter_pod_file
+          echo "  s.ios.deployment_target = '9.0'" >> $yhflutter_pod_file
+          echo "  s.static_framework = true" >> $yhflutter_pod_file
+          echo "end" >> $yhflutter_pod_file
           git remote -v
           git add .
           git commit -m '11打包提交成功' || echo "No changes, nothing to commit!"
