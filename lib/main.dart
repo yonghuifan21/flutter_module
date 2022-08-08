@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'secondflutter.dart';
 import 'MinePage.dart';
-import 'thirdflutter.dart'
+import 'thirdflutter.dart';
+
 void main() {
   runApp(MyApp());
 }
