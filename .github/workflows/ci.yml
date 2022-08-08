@@ -36,7 +36,7 @@ jobs:
           rm -rf $ios_out_path
           mkdir -p $ios_out_path
           rm -rf $ios_out_path
-          cp -r build/ios/framework/Release/* $ios_out_path
+          cp build/ios/framework/Release/* $ios_out_path
           rm -rf "$ios_out_path/Flutter.xcframework"
 
           echo 'App.xcframework搬运完成'
