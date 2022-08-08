@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'secondflutter.dart';
 import 'MinePage.dart';
-
+import 'thirdflutter.dart'
 void main() {
   runApp(MyApp());
 }
 
 Map<String, WidgetBuilder> routes = {
   "home": (context) => SecondFlutterWidget(),
-  "mime": (context) => MinePage()
+  "mime": (context) => MinePage(),
+  "third": (context) => ThirdFlutterWidget()
 };
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
       title: "Flutter Demo",
       theme: ThemeData(primarySwatch: Colors.red),
