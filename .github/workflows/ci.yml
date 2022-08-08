@@ -37,8 +37,6 @@ jobs:
           mkdir -p $ios_out_path
           rm -rf $ios_out_path
           cp -a build/ios/framework/Release/App.xcframework  $ios_out_path
-          flutterAppPath="$yhflutter_pod_framework/App.xcframework/ios-arm64_armv7/App.framework/App"
-          xcrun bitcode_strip -r $flutterAppPath -o $flutterAppPath
           echo 'App.xcframework搬运完成'
           if [ -d ${ios_out_path} ]; then
                 echo "编译成功......"${ios_out_path}
