@@ -36,7 +36,7 @@ jobs:
           rm -rf $ios_out_path
           mkdir -p $ios_out_path/App.xcframework
           cd $ios_out_path
-          cp -r build/ios/framework/Release/App.xcframework $ios_out_path/App.xcframework
+          cp -r /Users/runner/work/flutter_module/flutter_module/build/ios/framework/Release/App.xcframework $ios_out_path/App.xcframework
           echo 'App.xcframework搬运完成'
           if [ -d ${ios_out_path} ]; then
                 echo "编译成功......"${ios_out_path}
