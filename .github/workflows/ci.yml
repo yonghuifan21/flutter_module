@@ -35,8 +35,8 @@ jobs:
           echo "\n5\. 输出文件到 $ios_out_path"
           rm -rf $ios_out_path
           mkdir -p $ios_out_path
+          mkdir -p $ios_out_path/App.xcframework
           rm -rf $ios_out_path
-          sudo touch $ios_out_path/App.xcframework
           cp -r build/ios/framework/Release/App.xcframework $ios_out_path/App.xcframework
           echo 'App.xcframework搬运完成'
           if [ -d ${ios_out_path} ]; then
