@@ -80,9 +80,9 @@ packages:
     source: sdk
     version: "0.0.0"
   hello:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
-      path: "plugins/hello"
+      path: ".."
       relative: true
     source: path
     version: "0.0.1"
